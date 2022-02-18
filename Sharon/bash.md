@@ -46,14 +46,19 @@ mv seqs.txt sequences.fasta
 
 ### Question 6
 How can you create in a single command a file containing the contents "Hello, world!" and named universal_greeting.txt?
+
+```
  
 echo "Hello world!" > universal_greeting.txt
 
 ```
 ### Question 7
 What about creating the same file but with filename "universal greeting.txt" (the filename contains a space)?
+
 ```
 echo "Hello world!" > "universal greeting.txt"
+
+```
 
 ### Question 8
 How can you use the commandline (on whichever machine you are now, that is connected to the internet) to download directly the 
@@ -89,7 +94,7 @@ output
 
 100
 
-```man 
+```
 
 ### Question 10
 Extract only the identifier lines from this file, and write them into a file called "identifiers.txt".
@@ -224,14 +229,35 @@ Write a Bash script asking "What's your name?", then waiting for you (the user) 
 following what the program displays some text according to the following pattern:
 "Good morning/day/evening, your_name!
 It's now current_time on this lovely day of current_day." and it exits.
-​
+
 For instance, the message written by your program would be:
-```
+
 Good day Emmanuel! It's not 12:57EAT on this lovely day of July 20. 1:00
 or 'Good morning" in the morning hours, or "Good evening" in the evening hours, depending on the current time.
 Of course there will be at least an if or a case construct in your script.
+
 ```
-​
+
+  echo -n "What's your name? "
+  read name 
+  hour=`date +%H` #15
+  current_time=`date "+%H:%M%Z"` #15:30EAT
+  current_day=`date "+%B %d"` #February 16
+
+  if [[ $hour -lt 12 ]]
+  then 
+      period="morning"
+  elif [[ $hour -lt 18 ]]
+  then 
+      period="day"
+  else 
+      period="evening"
+  fi 
+
+  echo "Good $period $name! It is now $current_time on this lovely day of $current_day."
+  
+  ```
+
 ### Question 20
 Suppose your current working directory is /home/icipe/Linux/Exercises/. What is the command that will enable to move to /home/icipe/Fun_stuff/?
 ```
